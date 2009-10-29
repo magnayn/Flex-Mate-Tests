@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventMap  xmlns="http://mate.asfusion.com/" xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+			import manager.ThingManager;
+			import popup.DisplayPopup;
+		]]>
+	</mx:Script>
+	<Injectors target="{DisplayPopup}">
+		<PropertyInjector targetKey="thing" source="{ThingManager}" sourceKey="item" softBinding="false"/>
+	</Injectors>
+	
+	<Debugger level="{Debugger.ALL}"/>
+	
+</EventMap>

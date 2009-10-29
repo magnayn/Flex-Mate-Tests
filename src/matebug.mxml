@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:application="application.*">
+	
+	<application:AppEventMap/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import popup.DisplayPopup;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			
+			[Bindable]
+			public var item:Object;
+			
+			public function doDisplay():void
+			{
+				var p:DisplayPopup = DisplayPopup(PopUpManager.createPopUp(this, DisplayPopup, true));
+				
+				p.addEventListener(CloseEvent.CLOSE, closePopup, false,0,true);
+			}
+		
+		private function closePopup(event:CloseEvent):void
+	     {
+	     	var p:DisplayPopup = event.currentTarget as DisplayPopup;
+	     	
+	         PopUpManager.removePopUp(p); 
+	     }
+			
+		]]>
+	</mx:Script>
+	<mx:Button x="10" y="10" label="Display" click="doDisplay();"/>
+	<mx:Label x="19" y="40" text="{item.name}"/>
+	
+</mx:Application>
